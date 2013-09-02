@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Nive - Website API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="http://www.nive.co/assets/bootstrap-2.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="http://www.nive.co/assets/jquery.min.js" type="text/javascript"></script>
+<script src="http://www.nive.co/assets/bootstrap-2.3.0/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="http://www.nive.co/assets/nive/website.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  function site() {
+    var route = ""; // $('#route').val();
+    var svcname = $('#svc').val();
+    var base = $('#base').val();
+    return new nive.Website(base, svcname, route);
+  }
+  function getp(index) {
+    return $('#param'+index).val();
+  }
+  function success(data,text,xhr) { 
+    $('#message').html(text); 
+    var t="";
+    for(var propertyName in data) {
+      t+= propertyName+": "+data[propertyName]+"\n";
+    }
+    $('#result').text(t); 
+  }
+  function error(xhr,message,text) { 
+    $('#message').html(message); 
+    $('#result').text(text); 
+  }
+  $(document).ready(function() { $("#top").load("../nav.html"); });
+</script>  
+</head>
+<body>
+  <div id="top"></div>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h3 class="header">Nive Website API test</h3>
+        <p class="alert">
+          This page serves as a frontend to manually test the Website Service and shows how to use the Javascript API.<br/>
+          <a target="_blank" href="http://www.nive.co/website/en/documentation/content/files/websitecms.html#api">
+          Please refer to the Website CMS - Documentation for details.</a>
+        </p>
+      </div>
+      <div class="span4" id="functions">
+        <h4>API functions</h4>
+        <p><a onclick="site().toJson(getp(1), success, error)" class="btn">toJson( *container )</a></p>
+        <hr/>
+        <p><a onclick="site().pages(success, error)" class="btn">pages()</a></p>
+        <p><a onclick="site().elements(success, error)" class="btn">elements()</a></p>
+        <hr/>
+        <p><a onclick="$('#result').html(site().makeurl('toJson'));$('#message').text('');" class="btn">makeurl()</a></p>
+      </div>
+      <div class="span4" id="param">
+        <!--
+        <h4>Domain/Workspace route name</h4>
+        <input id="route" type="text" style="width:98%" placeholder="Route name" />
+        -->
+        <h4>Website service name</h4>
+        <input id="svc" type="text" style="width:98%" placeholder="Service name" />
+        <h4>Website content base path</h4>
+        <input id="base" type="text" style="width:98%" placeholder="Base path " />
+        <h4>Parameter as listed in function</h4>
+        <input id="param1" type="text" style="width:98%" placeholder="First parameter" />
+        <!--input id="param2" type="text" style="width:98%" placeholder="Second parameter" /-->
+        <!--input id="param3" type="text" style="width:98%" placeholder="Third parameter" /-->
+        <!--input id="param4" type="text" style="width:98%" placeholder="Fourth parameter" /-->
+        <hr/>
+        <h4>Result</h4>
+        <pre id="result"></pre>
+        <h4>Message</h4>
+        <pre id="message"></pre>
+      </div>
+      <div class="span4" id="doc">
+        <h4>How it works</h4>
+        <p><strong>Service name:</strong> Please enter the url name assigned to data storage instance (e.g. 'website').</p>
+        <p><strong>Base path:</strong> Pages are organised in a tree structure. If base path is empty functions are called relative to the current url. To use absolute urls enter the path beginning at the websites root. This requires the service name to be set. Important: Paths start with the websites' root name e.g. '/root'.</p>
+        <p><strong>Parameter:</strong> Each function button on the left lists the parameters in brackets. Please enter them in the right order in the input fields before clicking the button. Parameters marked with a '*' are optional. </p>
+        <p><strong>Buttons:</strong> Each API function is represented by a button. Click the button to trigger the function.</p>
+        <p><strong>Result:</strong> Renders the result returned by the server.</p>
+        <p><strong>Message:</strong> Displays errors or messages.</p>
+        <p><strong>makeurl():</strong> Returns the url generated for the api call.</p>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

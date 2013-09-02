@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Nive - UserAccount Widgets</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://www.nive.co/assets/bootstrap-2.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="http://www.nive.co/assets/jquery.min.js" type="text/javascript"></script>
+<script src="http://www.nive.co/assets/bootstrap-2.3.0/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  function openwidget(url) {
+    $('#wh').load(url, null, function(text,message,xhr){ $('#wh').html(text); });
+  }
+  $(document).ready(function() { $("#top").load("../nav.html"); });
+</script>  
+</head>
+<body>
+  <div id="top"></div>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+      <h3 class="header">UserAccount Widgets test</h3>
+        <p class="alert">
+          This page serves as a frontend to test the UserAccount service widgets.<br/>
+        <a target="_blank" href="http://www.nive.co/website/en/documentation/content/files/useraccounts.html#widgets">
+        Please refer to the UserAccount - Documentation for details.</a>
+        </p>
+        <p>The buttons will load the widget into the box on the right. The small icon <i class="icon-share"></i> will open a 
+        new window for the widget.</p>
+      </div>
+
+      <div class="span4">
+		<h4>Widgets</h4>
+		<p><a onclick="openwidget('/users/widgets/widget?ajax=1')" class="btn">Widget (widget)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+        <hr/>
+		<p><a onclick="openwidget('/users/widgets/signup')" class="btn">Signup (signup)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/signup2')" class="btn">Activate (signup2)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+        <hr/>
+		<p><a onclick="openwidget('/users/widgets/signin')" class="btn">Signin (signin)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/signout?ajax=1')" class="btn">Signout (signout)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/name')" class="btn">Name (name)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/profile')" class="btn">Profile (profile)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+        <hr/>
+		<p><a onclick="openwidget('/users/widgets/update')" class="btn">Update (update)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/updatePassword')" class="btn">Update password (updatePassword)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+        <hr/>
+		<p><a onclick="openwidget('/users/widgets/resetPassword')" class="btn">Reset password (resetPassword)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+		<p><a onclick="openwidget('/users/widgets/resetPassword2')" class="btn">Update password (resetPassword2)</a>
+		   <a target="_blank" href="/users/widgets/widget?ajax=1"><i class="icon-share"></i></a></p>
+      </div>
+
+      <div class="span8">
+		<h4>Result</h4>
+        <div class="well" id="wh">Please click a button on the left ... </div>
+      </div>
+
+    </div>
+  </div>
+  
+</body>
+</html>
