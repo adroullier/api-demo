@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
   function account() {
-    var route = ""; //$('#route').val();
+    var route = $('#route').val();
     return new nive.UserAccount(route);
   }
   function getp(index) {
@@ -65,10 +65,8 @@
         <p><a onclick="$('#result').html(account().makeurl('signin'));$('#message').text('');" class="btn">makeurl()</a></p>
       </div>
       <div class="span4" id="param">
-        <!--
-        <h4>Domain/Workspace route name</h4>
+        <h4>Domain/Workspace name</h4>
         <input id="route" type="text" style="width:98%" placeholder="Route name" />
-        -->
         <h4>Parameter as listed in function</h4>
         <input id="param1" type="text" style="width:98%" placeholder="First parameter" />
         <input id="param2" type="text" style="width:98%" placeholder="Second parameter" />

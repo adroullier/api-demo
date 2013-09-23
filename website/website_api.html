@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
   function site() {
-    var route = ""; // $('#route').val();
+    var route = $('#route').val();
     var svcname = $('#svc').val();
     var base = $('#base').val();
     return new nive.Website(base, svcname, route);
@@ -56,10 +56,8 @@
         <p><a onclick="$('#result').html(site().makeurl('toJson'));$('#message').text('');" class="btn">makeurl()</a></p>
       </div>
       <div class="span4" id="param">
-        <!--
         <h4>Domain/Workspace route name</h4>
         <input id="route" type="text" style="width:98%" placeholder="Route name" />
-        -->
         <h4>Website service name</h4>
         <input id="svc" type="text" style="width:98%" placeholder="Service name" />
         <h4>Website content base path</h4>
